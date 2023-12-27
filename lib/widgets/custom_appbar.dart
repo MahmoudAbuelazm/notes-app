@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text('Notes', style: Theme.of(context).textTheme.displayLarge),
         const Spacer(),
-        CustomSearchIcon(),
+        const CustomSearchIcon(),
       ],
     );
   }
