@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../constanst.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
-
+  const CustomButton({super.key, required this.onPressed});
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed ,
       style: ElevatedButton.styleFrom(
         backgroundColor: kcolor,
         shape: RoundedRectangleBorder(
