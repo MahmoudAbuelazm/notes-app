@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 
+import '../constanst.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_filed.dart';
 
@@ -40,6 +41,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           },
           maxLines: 5,
         ),
+        const ColorsListView(),
         const SizedBox(height: 20),
         BlocBuilder<AddNoteCubit, AddNoteState>(
           builder: (context, state) {
@@ -65,6 +67,67 @@ class _AddNoteFormState extends State<AddNoteForm> {
           },
         )
       ],
+    );
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key, required this.isActive, required this.color});
+  final bool isActive;
+  final Color color;
+  @override
+  Widget build(BuildContext context) {
+    return isActive
+        ? CircleAvatar(
+            backgroundColor: Colors.white,
+            radius: 37,
+            child: CircleAvatar(
+              radius: 35,
+              backgroundColor: color,
+            ),
+          )
+        : CircleAvatar(
+            radius: 35,
+            backgroundColor: color,
+          );
+  }
+}
+
+class ColorsListView extends StatefulWidget {
+  const ColorsListView({super.key});
+
+  @override
+  State<ColorsListView> createState() => _ColorsListViewState();
+}
+
+class _ColorsListViewState extends State<ColorsListView> {
+  int currentIndex = 0;
+
+  
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 75,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: kColorList.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: InkWell(
+              onTap: () {
+                currentIndex = index;
+                BlocProvider.of<AddNoteCubit>(context).color = kColorList[index];
+                setState(() {});
+              },
+              child: ColorItem(
+                isActive: currentIndex == index,
+                color: kColorList[index],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
