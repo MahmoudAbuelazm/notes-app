@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/sections/add_note_form.dart';
 import 'package:note_app/widgets/custom_text_filed.dart';
 
-import '../constanst.dart';
 import '../cubits/notes_cubit/notes_cubit.dart';
 import '../models/note_model.dart';
 import '../widgets/custom_appbar.dart';
+import '../widgets/edit_note_color_list.dart';
 
 class EditViewBody extends StatefulWidget {
   const EditViewBody({super.key, required this.note});
@@ -55,54 +54,6 @@ class _EditViewBodyState extends State<EditViewBody> {
             note: widget.note,
           )
         ],
-      ),
-    );
-  }
-}
-
-class EditNoteColorsList extends StatefulWidget {
-  const EditNoteColorsList({super.key, required this.note});
-
-  final NoteModel note;
-
-  @override
-  State<EditNoteColorsList> createState() => _EditNoteColorsListState();
-}
-
-class _EditNoteColorsListState extends State<EditNoteColorsList> {
-  late int currentIndex;
-
-  @override
-  void initState() {
-    currentIndex = kColorList.indexOf(
-      kColorList.firstWhere((element) => element.value == widget.note.color),
-    );
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 75,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: kColorList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: InkWell(
-              onTap: () {
-                currentIndex = index;
-                widget.note.color = kColorList[index].value;
-                setState(() {});
-              },
-              child: ColorItem(
-                isActive: currentIndex == index,
-                color: kColorList[index],
-              ),
-            ),
-          );
-        },
       ),
     );
   }
