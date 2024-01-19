@@ -51,7 +51,9 @@ class _EditViewBodyState extends State<EditViewBody> {
             },
             maxLines: 6,
           ),
-          const EditNoteColorsList()
+          EditNoteColorsList(
+            note: widget.note,
+          )
         ],
       ),
     );
@@ -59,14 +61,25 @@ class _EditViewBodyState extends State<EditViewBody> {
 }
 
 class EditNoteColorsList extends StatefulWidget {
-  const EditNoteColorsList({super.key});
+  const EditNoteColorsList({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
   State<EditNoteColorsList> createState() => _EditNoteColorsListState();
 }
 
 class _EditNoteColorsListState extends State<EditNoteColorsList> {
-  int currentIndex = 0;
+  late int currentIndex;
+
+  @override
+  void initState() {
+    currentIndex = kColorList.indexOf(
+      kColorList.firstWhere((element) => element.value == widget.note.color),
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -80,7 +93,7 @@ class _EditNoteColorsListState extends State<EditNoteColorsList> {
             child: InkWell(
               onTap: () {
                 currentIndex = index;
-
+                widget.note.color = kColorList[index].value;
                 setState(() {});
               },
               child: ColorItem(
