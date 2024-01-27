@@ -16,6 +16,17 @@ class NoteItem extends StatelessWidget {
       onDismissed: (direction) {
         note.delete();
         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text(
+              'Note Deleted',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            backgroundColor: Colors.grey[900],
+          ),
+        );
       },
       key: Key(note.title),
       direction: DismissDirection.endToStart,

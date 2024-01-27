@@ -26,7 +26,7 @@ class _EditViewBodyState extends State<EditViewBody> {
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           CustomAppBar(
