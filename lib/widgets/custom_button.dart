@@ -13,18 +13,20 @@ class CustomButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: kcolor,
+        maximumSize: const Size(double.infinity, 60),
+        minimumSize: const Size(double.infinity, 60),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
       child: isLoading
-          ?const CircularProgressIndicator(
-              color: Colors.black,
+          ? const CircularProgressIndicator(
+              color: Colors.white,
             )
-          :const Text(
+          : const Text(
               'Add',
               style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),

@@ -4,7 +4,11 @@ import '../constanst.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, required this.hintText, this.maxLines = 1, this.onSaved, this.onChanged});
+      {super.key,
+      required this.hintText,
+      this.maxLines = 1,
+      this.onSaved,
+      this.onChanged});
   final String hintText;
   final int maxLines;
   final void Function(String?)? onSaved;
@@ -24,6 +28,8 @@ class CustomTextField extends StatelessWidget {
       cursorColor: kcolor,
       maxLines: maxLines,
       decoration: InputDecoration(
+        fillColor: Colors.grey.withOpacity(0.2),
+        filled: true,
         hintText: hintText,
         hintStyle: const TextStyle(color: kcolor),
         border: buildBorder(),

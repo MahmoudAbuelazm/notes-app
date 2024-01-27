@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../constanst.dart';
@@ -27,7 +26,13 @@ class _EditNoteColorsListState extends State<EditNoteColorsList> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: Colors.white.withOpacity(0.5),
+        ),
+      ),
       height: 75,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

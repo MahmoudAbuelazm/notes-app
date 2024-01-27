@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/constanst.dart';
 
 import '../cubits/notes_cubit/notes_cubit.dart';
 import '../sections/notes_view_body.dart';
@@ -22,10 +21,10 @@ class _NotesViewState extends State<NotesView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(backgroundColor: Colors.black,
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
-        backgroundColor: kcolor,
+        backgroundColor: Colors.black,
         onPressed: () {
           showModalBottomSheet(
             isScrollControlled: true,
@@ -40,7 +39,7 @@ class _NotesViewState extends State<NotesView> {
         },
         child: const Icon(
           Icons.add,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       body: const NotesViewBody(),

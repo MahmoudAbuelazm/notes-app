@@ -8,7 +8,7 @@ import '../widgets/custom_appbar.dart';
 import '../widgets/edit_note_color_list.dart';
 
 class EditViewBody extends StatefulWidget {
-  const EditViewBody({super.key, required this.note});
+  const EditViewBody({super.key, required this.note, required});
   final NoteModel note;
 
   @override
@@ -26,6 +26,9 @@ class _EditViewBodyState extends State<EditViewBody> {
       ),
       child: Column(
         children: [
+          SizedBox(
+            height: 10,
+          ),
           CustomAppBar(
             onPressed: () {
               widget.note.title = title ?? widget.note.title;
@@ -37,11 +40,17 @@ class _EditViewBodyState extends State<EditViewBody> {
             title: 'Edit Note',
             icon: Icons.check,
           ),
+          const SizedBox(
+            height: 20,
+          ),
           CustomTextField(
             hintText: widget.note.title,
             onSaved: (value) {
               title = value!;
             },
+          ),
+          const SizedBox(
+            height: 20,
           ),
           CustomTextField(
             hintText: widget.note.descripton,
@@ -49,6 +58,9 @@ class _EditViewBodyState extends State<EditViewBody> {
               description = value!;
             },
             maxLines: 6,
+          ),
+          const SizedBox(
+            height: 20,
           ),
           EditNoteColorsList(
             note: widget.note,

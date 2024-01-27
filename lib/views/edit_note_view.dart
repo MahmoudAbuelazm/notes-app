@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/models/note_model.dart';
 
+import '../constanst.dart';
 import '../sections/edit_view_body.dart';
 
 class EditNoteView extends StatelessWidget {
@@ -9,8 +10,9 @@ class EditNoteView extends StatelessWidget {
   final NoteModel note;
   @override
   Widget build(BuildContext context) {
-    
-    return  Scaffold(
+    return Scaffold(
+      backgroundColor:
+          kColorList.firstWhere((element) => element.value == note.color),
       body: EditViewBody(
         note: note,
       ),

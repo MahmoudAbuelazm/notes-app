@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_appbar.dart';
 import '../widgets/notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
@@ -7,18 +6,39 @@ class NotesViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 20,
         ),
         child: Column(
           children: [
-            CustomAppBar(
-              title: 'Notes',
-              icon: Icons.search,
+            const SizedBox(
+              height: 20,
             ),
-            Expanded(
+            TextField(
+              decoration: InputDecoration(
+                fillColor: Colors.grey[900],
+                filled: true,
+                hintText: 'Search Your Notes',
+                hintStyle: const TextStyle(
+                  color: Colors.white,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(18),
+                  borderSide: const BorderSide(color: Colors.white),
+                ),
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const Expanded(
               child: NotesListView(),
             ),
           ],
